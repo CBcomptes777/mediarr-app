@@ -3,7 +3,7 @@ services:
     # Build from source (default) / Construction depuis les sources (par défaut)
     build: .
     # Or use the published image (replace OWNER by your GitHub account) / Ou l'image publiée (remplace OWNER) :
-    # image: ghcr.io/OWNER/mediarr:latest
+    # image: ghcr.io/OWNER/mediarr-app:latest
     container_name: mediarr
     restart: unless-stopped
     env_file: .env

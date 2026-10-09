@@ -32,12 +32,12 @@ cp .env.example .env        # puis remplis .env (voir « Variables »)
 docker compose up -d --build
 ```
 
-Ouvre `http://<ip-de-la-machine>:8080`. Par défaut, l'image est construite depuis les sources. Pour utiliser l'image publiée, commente `build: .` et décommente la ligne `image: ghcr.io/OWNER/mediarr:latest` (remplace `OWNER` par ton compte GitHub).
+Ouvre `http://<ip-de-la-machine>:8080`. Par défaut, l'image est construite depuis les sources. Pour utiliser l'image publiée, commente `build: .` et décommente la ligne `image: ghcr.io/OWNER/mediarr-app:latest` (remplace `OWNER` par ton compte GitHub).
 
 ### Sur TrueNAS SCALE (application personnalisée)
 
 1. *Apps → Discover Apps → Custom App* (ou *Install via YAML*).
-2. **Image** : `ghcr.io/OWNER/mediarr:latest` (politique de téléchargement : *Always* pour recevoir les mises à jour).
+2. **Image** : `ghcr.io/OWNER/mediarr-app:latest` (politique de téléchargement : *Always* pour recevoir les mises à jour).
 3. **Port** : conteneur `8080` → port du NAS libre, par exemple `30080`.
 4. **Stockage** : monte un dossier du pool sur `/data` (réglages de l'app). Le conteneur tourne avec l'utilisateur `node` (uid 1000) : ce dossier doit lui être inscriptible.
 5. **Variables d'environnement** : celles de `.env.example` (au minimum `ACCESS_TOKEN` et l'URL + la clé de chaque service que tu utilises). Les URL sont celles **vues depuis le conteneur** : l'IP du NAS et le port de chaque application, pas `localhost`.
@@ -48,7 +48,7 @@ Ouvre `http://<ip-de-la-machine>:8080`. Par défaut, l'image est construite depu
 ```yaml
 services:
   mediarr:
-    image: ghcr.io/OWNER/mediarr:latest
+    image: ghcr.io/OWNER/mediarr-app:latest
     restart: unless-stopped
     ports:
       - "30080:8080"
@@ -150,12 +150,12 @@ cp .env.example .env        # then edit .env (see "Variables")
 docker compose up -d --build
 ```
 
-Open `http://<machine-ip>:8080`. By default the image is built from source. To use the published image, comment out `build: .` and uncomment the `image: ghcr.io/OWNER/mediarr:latest` line (replace `OWNER` with your GitHub account).
+Open `http://<machine-ip>:8080`. By default the image is built from source. To use the published image, comment out `build: .` and uncomment the `image: ghcr.io/OWNER/mediarr-app:latest` line (replace `OWNER` with your GitHub account).
 
 ### TrueNAS SCALE (Custom App)
 
 1. *Apps → Discover Apps → Custom App* (or *Install via YAML*).
-2. **Image**: `ghcr.io/OWNER/mediarr:latest` (pull policy *Always* to receive updates).
+2. **Image**: `ghcr.io/OWNER/mediarr-app:latest` (pull policy *Always* to receive updates).
 3. **Port**: container `8080` → a free NAS port, e.g. `30080`.
 4. **Storage**: mount a pool dataset on `/data` (app settings). The container runs as user `node` (uid 1000): the folder must be writable by it.
 5. **Environment variables**: those of `.env.example` (at least `ACCESS_TOKEN` and the URL + key of each service you use). URLs are the ones **seen from the container**: the NAS IP and each app's port, not `localhost`.
