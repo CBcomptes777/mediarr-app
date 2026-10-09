@@ -1,0 +1,22 @@
+{
+  "name": "mediarr-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "tsx --test src/server.test.ts src/lecture.test.ts src/images.test.ts src/actions.test.ts src/catalogue.test.ts src/affiches.test.ts src/reglages.test.ts src/stats.test.ts src/webhooks.test.ts src/detail.test.ts src/plex.test.ts src/recherche.test.ts src/prowlarr.test.ts src/homarr.test.ts src/surveillant.test.ts src/biblio.test.ts src/interactive.test.ts src/decouvrir.test.ts src/recherche-delai.test.ts src/torrents.test.ts ../web/src/releasesLogique.test.ts ../web/src/bibliothequeLogique.test.ts ../web/src/calendrierLogique.test.ts ../web/src/decouvrirLogique.test.ts ../web/src/qbitLogique.test.ts"
+  },
+  "dependencies": {
+    "@fastify/static": "^8.0.0",
+    "fastify": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,14 @@
+services:
+  mediarr:
+    # Build from source (default) / Construction depuis les sources (par défaut)
+    build: .
+    # Or use the published image (replace OWNER by your GitHub account) / Ou l'image publiée (remplace OWNER) :
+    # image: ghcr.io/OWNER/mediarr:latest
+    container_name: mediarr
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      # App settings (prefs.json): keep them between image updates. / Réglages de l'app : à garder entre deux mises à jour.
+      - ./data:/data
